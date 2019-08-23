@@ -1,5 +1,3 @@
-from exportimages import Webdriver
-
 from .core.log import with_log
 from .core.constants import PLOT_PATH
 
@@ -18,8 +16,7 @@ def Plot_Results(lg):
 
     # plot_fmri(PLOT_PATH)
 
-    with Webdriver(PLOT_PATH) as wd:
-        plot_gaussian(wd)
-        plot_histogram(wd)
-        plot_scatter(wd)
-        plot_smooth(wd)
+    plot_gaussian(PLOT_PATH)
+    plot_histogram(PLOT_PATH)
+    plot_scatter(PLOT_PATH)
+    plot_smooth(PLOT_PATH)

@@ -1,12 +1,11 @@
 from numpy import arange
 from scipy.stats import norm
 import plotly.graph_objs as go
-from exportimages import export_plotly
 
 import colorlover as cl
 
 
-def plot_gaussian(wd):
+def plot_gaussian(PLOT_PATH):
     x = arange(0, 30, .05)
 
     layout = go.Layout(
@@ -45,4 +44,4 @@ def plot_gaussian(wd):
         layout=layout,
         )
 
-    export_plotly(fig, 'gaussian.svg', int(4.5 * 90), int(6 * 90), wd)
+    fig.write_image(str(PLOT_PATH / 'gaussian.svg'))

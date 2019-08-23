@@ -2,15 +2,14 @@ from bidso.utils import read_tsv
 from boavus.corr.corrfmri import select_channels
 import plotly.graph_objs as go
 from pathlib import Path
-from exportimages import export_plotly
 
 pvalue = 0.05  # TODO: PARAMETERS
 
 
-def plot_scatter(wd):
+def plot_scatter(PLOT_PATH):
     summary = read_tsv(Path('/Fridge/users/giovanni/projects/grvx/derivatives/nipype/grvx/corr_fmri_ecog_summary/output/summary_per_subject.tsv'))
-    ecog_file = Path('/Fridge/users/giovanni/projects/grvx/derivatives/nipype/grvx/corr_fmri_ecog_summary/output/ecog/sub-delft_ses-UMCUECOGday01_task-motorHandLeft_run-1_acq-clinical_compare.tsv')
-    fmri_file = Path('/Fridge/users/giovanni/projects/grvx/derivatives/nipype/grvx/corr_fmri_ecog_summary/output/fmri/sub-delft_ses-UMCU3Tdaym13_task-motorHandLeft_run-1_bold_compare.tsv')
+    ecog_file = Path('/Fridge/users/giovanni/projects/grvx/derivatives/nipype/grvx/corr_fmri_ecog_summary/output/ecog/sub-delft_ses-UMCUECOG_task-motorHandLeft_acq-clinical_run-1_compare.tsv')
+    fmri_file = Path('/Fridge/users/giovanni/projects/grvx/derivatives/nipype/grvx/corr_fmri_ecog_summary/output/fmri/sub-delft_ses-UMCU3Tpreop_task-motorHandLeft_run-1_bold_compare.tsv')
 
     fmri_tsv = read_tsv(fmri_file)
     ecog_tsv = read_tsv(ecog_file)
@@ -73,4 +72,4 @@ def plot_scatter(wd):
         layout=layout,
         )
 
-    export_plotly(fig, 'scatter.svg', int(3 * 96), int(5 * 96), wd)
+    fig.write_image(str(PLOT_PATH / 'scatter.svg'))

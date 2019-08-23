@@ -1,6 +1,5 @@
 from bidso.utils import read_tsv
 import plotly.graph_objs as go
-from exportimages import export_plotly
 from pathlib import Path
 
 
@@ -12,7 +11,7 @@ COLOR = {
 SHIFT = 'middle'  # middle / whole
 
 
-def plot_histogram(wd):
+def plot_histogram(PLOT_PATH):
     summary = read_tsv(Path('/Fridge/users/giovanni/projects/grvx/derivatives/nipype/grvx/corr_fmri_ecog_summary/output/summary_per_subject.tsv'))
 
     for value_type in ('size_at_peak', 'r2_at_peak', 'size_at_concave'):
@@ -76,4 +75,4 @@ def plot_histogram(wd):
             data=traces,
             layout=layout,
             )
-        export_plotly(fig, f'histogram_{value_type}.svg', int(3 * 96), int(5 * 96), wd)
+        fig.write_image(str(PLOT_PATH / 'gaussian.svg'))
