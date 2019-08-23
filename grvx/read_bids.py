@@ -4,12 +4,10 @@ from numpy import where
 from pandas import DataFrame, read_pickle, isnull
 
 from xelo2bids.core.constants import TASKS_PATH
-from xelo2bids import bids_mri, xelo2bids
+from xelo2bids import xelo2bids
 
 from .core.constants import DATA_PATH
 from .core.log import with_log
-
-bids_mri.RUN_DEFACE = False
 
 """
 # only TR = 0.6
@@ -52,6 +50,7 @@ def Read_As_Bids(lg):
         '--log', 'debug',
         'create',
         str(DATA_PATH),
+        '--nodeface',
         '--keys',
         ]
         + tasks
