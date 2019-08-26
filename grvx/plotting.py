@@ -14,7 +14,7 @@ def Plot_Results(lg):
     for i in PLOT_PATH.glob('*'):
         i.unlink()
 
-    # plot_fmri(PLOT_PATH)
+    plot_fmri(PLOT_PATH)
 
     plot_gaussian(PLOT_PATH)
     plot_histogram(PLOT_PATH)

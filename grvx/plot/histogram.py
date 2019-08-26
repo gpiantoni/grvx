@@ -75,4 +75,4 @@ def plot_histogram(PLOT_PATH):
             data=traces,
             layout=layout,
             )
-        fig.write_image(str(PLOT_PATH / 'gaussian.svg'))
+        fig.write_image(str(PLOT_PATH / f'histogram_{value_type}.svg'))

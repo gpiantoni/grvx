@@ -1,13 +1,12 @@
 from pathlib import Path
 from numpy import gradient
 import plotly.graph_objs as go
-from exportimages import export_plotly
 
 from bidso.utils import read_tsv
 from bidso import file_Core
 
 
-def plot_smooth(wd):
+def plot_smooth(PLOT_PATH):
     for one_tsv in Path('/Fridge/users/giovanni/projects/grvx/derivatives/nipype/grvx/corr_fmri_ecog_summary/output/rsquared').glob('*.tsv'):
         results = read_tsv(one_tsv)
         subject = file_Core(one_tsv).subject
@@ -17,7 +16,7 @@ def plot_smooth(wd):
                 x=results['Kernel'],
                 y=results['Rsquared'],
                 marker=dict(
-                    color='k',
+                    color='black',
                     ),
                 ),
             ]
@@ -43,14 +42,14 @@ def plot_smooth(wd):
             data=traces,
             layout=layout,
             )
-        export_plotly(fig, f'smooth_{subject}_r2.svg', int(3 * 96), int(5 * 96), wd)
+        fig.write_image(str(PLOT_PATH / f'smooth_{subject}_r2.svg'))
 
         traces = [
             dict(
                 x=results['Kernel'],
                 y=gradient(gradient(results['Rsquared'])),
                 marker=dict(
-                    color='k',
+                    color='black',
                     ),
                 ),
             ]
@@ -66,4 +65,5 @@ def plot_smooth(wd):
             data=traces,
             layout=layout,
             )
-        export_plotly(fig, f'smooth_{subject}_deriv.svg', int(3 * 96), int(5 * 96), wd)
+
+    fig.write_image(str(PLOT_PATH / f'smooth_{subject}_deriv.svg'))
