@@ -84,7 +84,9 @@ def _find_tasks_with_motor():
             subjects = set(ecog_subj) & set(fmri_subj)
 
             for subj in subjects:
-                if subj in ('buij', 'albe', 'enge', 'weve', 'mars', 'mang'):  # don't remember why
+                if subj in ('mars', ):  # TR == 0.5s
+                    continue
+                if subj in ('groo', ):  # bad electrode locations
                     continue
                 if subj in ('arnhem', ):  # cannot use clinical data
                     continue

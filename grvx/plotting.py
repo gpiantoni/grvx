@@ -6,6 +6,7 @@ from .plot.gaussian import plot_gaussian
 from .plot.fmri import plot_fmri
 from .plot.scatter import plot_scatter
 from .plot.smooth import plot_smooth
+from .plot.surfaces import plot_surfaces
 
 
 @with_log
@@ -14,7 +15,8 @@ def Plot_Results(lg):
     for i in PLOT_PATH.glob('*'):
         i.unlink()
 
-    plot_fmri(PLOT_PATH)
+    # plot_fmri(PLOT_PATH)
+    # plot_surfaces(PLOT_PATH)
 
     plot_gaussian(PLOT_PATH)
     plot_histogram(PLOT_PATH)

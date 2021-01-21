@@ -42,7 +42,7 @@ def plot_smooth(PLOT_PATH):
             data=traces,
             layout=layout,
             )
-        fig.write_image(str(PLOT_PATH / f'smooth_{subject}_r2.svg'))
+        fig.write_image(str(PLOT_PATH / f'smooth_r2_{subject}.svg'))
 
         traces = [
             dict(
@@ -65,5 +65,4 @@ def plot_smooth(PLOT_PATH):
             data=traces,
             layout=layout,
             )
-
-    fig.write_image(str(PLOT_PATH / f'smooth_{subject}_deriv.svg'))
+        fig.write_image(str(PLOT_PATH / f'smooth_deriv_{subject}.svg'))
